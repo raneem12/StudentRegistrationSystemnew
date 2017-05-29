@@ -2,6 +2,7 @@ package model.DAO;
 
 
 
+import model.ConnectionManager;
 import model.Entities.User;
 
 import java.sql.*;
@@ -13,7 +14,7 @@ import java.util.List;
  */
 public class UsersDAO {
 
-      /*  private static UsersDAO usersDAOinstance = new UsersDAO();
+       private static UsersDAO usersDAOinstance = new UsersDAO();
 
         public static UsersDAO getInstance(){
             return usersDAOinstance;
@@ -32,21 +33,22 @@ public class UsersDAO {
          * @param password
          * @return
          */
-  /*      public User CheckInDatabase(String username, String password)
+       public User CheckInDatabase(String username, String password)
         {
             Connection con = ConnectionManager.getConnection();
             PreparedStatement preparedStatement;
             ResultSet resultSet = null;
+            System.out.println(username + " " + password);
             try {
-                preparedStatement = con.prepareStatement("Select * from users" +
-                        " where username = ? and password =? ");
+                preparedStatement = con.prepareStatement("Select * from users WHERE username =? AND  password= ?");
                 preparedStatement.setString(1, username);
                 preparedStatement.setString(2, password);
                 resultSet = preparedStatement.executeQuery();
 
                 resultSet.next();
-
-                return new User(resultSet.getString("username"), resultSet.getString("password"),resultSet.getString("user_type"));
+                User user = new User(resultSet.getString(1), resultSet.getString(2));
+                System.out.println(user.getUsername());
+                return new User(resultSet.getString("username"), resultSet.getString("password"));
             }
             catch (SQLException e)
             {
@@ -56,71 +58,9 @@ public class UsersDAO {
         }
 
 
-        /**
-         * method to get all users from Server.database
-         *
-         * @return List of users
-         * @throws SQLException
-         */
- /*       public List<User> getAllUsers() throws SQLException {
-
-            Connection con = ConnectionManager.getConnection();
-
-            // List of Users
-            List<User> users = new ArrayList<>();
-            Statement mystmt = null;
-            try {
-                // Creates a Statement object for sending SQL statements to the Server.database.
-                mystmt = con.createStatement();
-
-                // Executes the given SQL statement, which returns a single ResultSet object.
-                ResultSet rs = mystmt.executeQuery("Select * from users");
-
-                while (rs.next())
-                {
-                    int id = rs.getInt(1);
-                    String userName = rs.getString(2);
-                    String password = rs.getString(3);
-                    String userType = rs.getString(4;
-
-                    users.add(new User(id, userName, password,userType));
-                }
-                con.close();
-            } catch (SQLException e1) {
-            }
-            return users;
-        }
 
 
-        /**
-         * method to add User to Server.database
-         *
-         * @param user
-         * @return
-         * @throws SQLException
-         */
-     /*   public boolean addUser(User user) throws SQLException {
-            CachedUsers.setNoDataChanged(false);
-            Connection connection = ConnectionManager.getConnection();
-            try {
-                // Creates a PreparedStatement object for sending parameterized SQL statements to the Server.database.
-                PreparedStatement preparedStatement = connection.prepareStatement
-                        ("insert into users "
-                                + "(username,password,user_Type)"
-                                + " values (?,?,?,?)");
 
-                preparedStatement.setString(1, user.getUserName());
-                preparedStatement.setString(2, user.getPassword());
-                preparedStatement.setString(3 , user.getUserType());
-
-
-                int rowAffected = preparedStatement.executeUpdate();
-                connection.close();
-                return rowAffected > 0;
-            } catch (SQLException e) {
-            }
-            return false;
-        }
 
 
         /**
@@ -130,9 +70,9 @@ public class UsersDAO {
          * @return
          * @throws SQLException
          */
-  /*      public Boolean removeUser(int id) throws SQLException
+       public Boolean removeUser(int id) throws SQLException
         {
-            CachedUsers.setNoDataChanged(false);
+            //CachedUsers.setNoDataChanged(false);
             Connection con = ConnectionManager.getConnection();
             try {
                 PreparedStatement preparedStatement = con.prepareStatement(
@@ -148,5 +88,6 @@ public class UsersDAO {
             }
             return false;
         }
-    }*/
+
+
 }

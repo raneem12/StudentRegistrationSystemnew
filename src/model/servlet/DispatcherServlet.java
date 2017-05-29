@@ -2,7 +2,7 @@ package model.servlet;
 
 
 import model.controllers.InputProductController;
-import model.controllers.SaveProductController;
+import model.controllers.LoginController;
 
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
@@ -44,16 +44,16 @@ import javax.servlet.http.HttpServletResponse;
          */
             int lastIndex = uri.lastIndexOf("/");
             String action = uri.substring(lastIndex + 1);
-
+            response.getWriter().println(uri);
             String dispatchUrl = null;
             if (action.equals("product_input.action")) {
                 InputProductController controller =
                         new InputProductController();
                 dispatchUrl = controller.handleRequest(request,
                         response);
-            } else if (action.equals("product_save.action")) {
-                SaveProductController controller =
-                        new SaveProductController();
+            } else if (action.equals("login.action")) {
+                LoginController controller =
+                        new LoginController();
                 dispatchUrl = controller.handleRequest(request,
                         response);
             }

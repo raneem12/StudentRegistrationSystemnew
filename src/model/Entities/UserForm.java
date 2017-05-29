@@ -5,22 +5,12 @@ package model.Entities;
  */
 public class UserForm {
     private static final long serialVersionUID = 748392348L;
-    private String name;
+
     private int id;
     private String username;
     private String password;
 
 
-
-    public String getName()
-    {
-        return name;
-    }
-
-    public void setName(String name)
-    {
-        this.name = name;
-    }
 
     public int getId()
     {

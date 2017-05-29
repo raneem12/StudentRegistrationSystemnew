@@ -23,9 +23,9 @@
 
   <h2 class="login-header">Log in</h2>
 
-  <form class="login-container" action = "product_save.action" method="post">
-    <p><input type="username" placeholder="username"></p>
-    <p><input type="password" placeholder="Password"></p>
+  <form class="login-container" action = "login.action" method="post">
+    <p><input type="text" name="username" placeholder="username"></p>
+    <p><input type="password" name="password" placeholder="Password"></p>
     <p><input type="submit" value="Log in"></p>
   </form>
 </div>

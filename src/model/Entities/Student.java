@@ -5,10 +5,13 @@ import java.util.ArrayList;
 /**
  * Created by rzzayed on 5/23/17.
  */
-public class Student extends User
+public class Student  extends User
 {
     private int grade;
     private ArrayList<Course> courses;
+
+    public Student() {
+    }
 
     public int getGrade() {
         return grade;

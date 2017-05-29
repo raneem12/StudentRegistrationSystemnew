@@ -11,7 +11,7 @@ public class UserValidator {
 
     public List<String> validate(UserForm userForm) {
         List<String> errors = new ArrayList<String>();
-        String name = userForm.getName();
+        String name = userForm.getUsername();
         if (name == null || name.trim().isEmpty()) {
             errors.add("User must have a name");
         }
