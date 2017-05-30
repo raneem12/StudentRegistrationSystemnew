@@ -1,5 +1,6 @@
 package model.DAO;
 
+import model.ConnectionManager;
 import model.Entities.Course;
 
 import java.sql.*;
@@ -11,18 +12,12 @@ import java.util.List;
  */
 public class CourseDAO
 {
-    /*    private static CourseDAO courseDAO = new CourseDAO();
-        private  ConnectionPool connectionPool;
+       private static CourseDAO courseDAO = new CourseDAO();
+       // private  ConnectionPool connectionPool;
 
     private CourseDAO()
         {
-            try {
-                connectionPool= new ConnectionPool("com.mysql.jdbc.Driver",
-                        "jdbc:mysql://localhost:3306/chat_db?useSSL=false",
-                        "root","root",5,10,true);
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+
         }
     public static CourseDAO getInstance(){
         return courseDAO;
@@ -34,12 +29,10 @@ public class CourseDAO
      * @return true if succeeded
      * @throws SQLException
      */
- /*   public boolean addCourseToDB(Course course) throws SQLException
+   public boolean addCourseToDB(Course course) throws SQLException
     {
-        // don't get the messages from the cache because data changed
-        CachedCourses.setNoDataChanged(false);
 
-        Connection connection = connectionPool.getConnection();
+        Connection connection = ConnectionManager.getConnection();
         try {
             // Creates a PreparedStatement object for sending parameterized SQL statements to the Server.database.
             PreparedStatement preparedStatement = connection.prepareStatement
@@ -52,7 +45,6 @@ public class CourseDAO
 
             int rowAffected = preparedStatement.executeUpdate();
 
-            connectionPool.free(connection);
             connection.close();
             return rowAffected > 0;
 
@@ -66,9 +58,9 @@ public class CourseDAO
      * @return List of messages
      * @throws SQLException
      */
- /*   public List<Course> getAllCourses() throws SQLException
+   public List<Course> getAllCourses() throws SQLException
     {
-        Connection connection =  connectionPool.getConnection();
+        Connection connection =  ConnectionManager.getConnection();
 
         // ArrayList of messages
         List<Course> courses = new ArrayList<>();
@@ -88,12 +80,11 @@ public class CourseDAO
                 courses.add(new Course(courseId,courseName));
             }
 
-            connectionPool.free(connection);
             connection.close();
         } catch (SQLException e1) {
         }
         return courses;
     }
 
-}*/
 }
+

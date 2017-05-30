@@ -1,10 +1,16 @@
 package model.servlet;
 
 
+import model.DAO.CourseDAO;
+import model.DAO.UsersDAO;
+import model.Entities.Course;
+import model.controllers.AdminController;
 import model.controllers.InputProductController;
 import model.controllers.LoginController;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -46,19 +52,40 @@ import javax.servlet.http.HttpServletResponse;
             String action = uri.substring(lastIndex + 1);
             response.getWriter().println(uri);
             String dispatchUrl = null;
-            if (action.equals("product_input.action")) {
-                InputProductController controller =
-                        new InputProductController();
-                dispatchUrl = controller.handleRequest(request,
-                        response);
-            } else if (action.equals("login.action")) {
+
+            if (action.equals("login.action"))
+            {
                 LoginController controller =
                         new LoginController();
                 dispatchUrl = controller.handleRequest(request,
                         response);
             }
+            else if (action.equals("listUser.action"))
+            {
+                LoginController controller =
+                        new LoginController();
+                dispatchUrl = controller.handleRequest(request,
+                        response);
+            }
+            else if (action.equals("listStudents"))
+            {
+               /* AdminController controller =
+                        new AdminController();
+                dispatchUrl = controller.handleRequest(request,
+                        response);*/
+            }  else if (action.equals("listcourses"))
+            {
+                try {
+                    ArrayList<Course> courses = (ArrayList<Course>) CourseDAO.getInstance().getAllCourses();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
 
-            if (dispatchUrl != null) {
+            }
+
+
+            if (dispatchUrl != null)
+            {
                 RequestDispatcher rd =
                         request.getRequestDispatcher(dispatchUrl);
                 rd.forward(request, response);

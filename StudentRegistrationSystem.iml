@@ -24,15 +24,6 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="file://$MODULE_DIR$/libs/jstl-1.2" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
           <root url="file://$MODULE_DIR$/libs/mysql-connector-java-5.1.42" />
         </CLASSES>
         <JAVADOC />
@@ -40,6 +31,15 @@
           <root url="file://$MODULE_DIR$/libs/mysql-connector-java-5.1.42/src" />
         </SOURCES>
         <jarDirectory url="file://$MODULE_DIR$/libs/mysql-connector-java-5.1.42" recursive="false" />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="file://$USER_HOME$/Downloads/jstl-1.2" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
       </library>
     </orderEntry>
   </component>

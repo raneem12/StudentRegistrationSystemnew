@@ -46,7 +46,7 @@ public class StudentDAO
 
             resultSet.next();
 
-            System.out.println(user.getUsername());
+            //System.out.println(user.getUsername());
             return new User(resultSet.getString("username"), resultSet.getString("password"));
         }
         catch (SQLException e)

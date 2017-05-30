@@ -46,8 +46,11 @@ public class UsersDAO {
                 resultSet = preparedStatement.executeQuery();
 
                 resultSet.next();
-                User user = new User(resultSet.getString(1), resultSet.getString(2));
-                System.out.println(user.getUsername());
+                User user = new User();
+                user.setUsername(resultSet.getString("username"));
+                user.setPassword(resultSet.getString("password"));
+                // System.out.println(user.getUsername());
+                // System.out.println(user.getPassword());
                 return new User(resultSet.getString("username"), resultSet.getString("password"));
             }
             catch (SQLException e)
@@ -56,6 +59,42 @@ public class UsersDAO {
             }
             return null;
         }
+
+    /**
+     * method to get all users from Server.database
+     *
+     * @return List of users
+     * @throws SQLException
+     */
+    public List<User> getAllUsers() throws SQLException {
+
+        Connection con = ConnectionManager.getConnection();
+
+        // List of Users
+        List<User> users = new ArrayList<>();
+        Statement mystmt = null;
+        try {
+            // Creates a Statement object for sending SQL statements to the Server.database.
+            mystmt = con.createStatement();
+
+            // Executes the given SQL statement, which returns a single ResultSet object.
+            ResultSet rs = mystmt.executeQuery("Select * from users");
+
+            while (rs.next())
+            {
+
+                String userName = rs.getString("username");
+                String password = rs.getString("password");
+
+
+                users.add(new User(userName, password));
+            }
+            System.out.println(users.get(0));
+            con.close();
+        } catch (SQLException e1) {
+        }
+        return users;
+    }
 
 
 

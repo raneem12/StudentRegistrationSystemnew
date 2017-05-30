@@ -1,3 +1,8 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="model.Entities.User" %>
+<%@ page import="java.util.ArrayList" %>
+
+
 <%--
   Created by IntelliJ IDEA.
   User: rzzayed
@@ -7,6 +12,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
+
 <head>
     <title>Bootstrap Example</title>
     <meta charset="utf-8">
@@ -17,22 +23,36 @@
 </head>
 <body>
 
+
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
             <a class="navbar-brand">Administrator</a>
         </div>
         <ul class="nav navbar-nav">
-            <li class="active"><a href="usersList.jsp">Students</a></li>
-            <li><a href="usersList.jsp">Courses</a></li>
+            <li class="active"><a href="liststudents" >Students</a></li>
+            <li><a href="listcourses">Courses</a></li>
             <li><a href="#">Teachers</a></li>
         </ul>
     </div>
 </nav>
 
+
 <div class="container">
-    <h3>Welcome Admin </h3>
+    <h1><% User user = (User) session.getAttribute("currentSessionUser");
+
+        out.print("Welcome " + user.getUsername() );%></h1>
 </div>
+<table border="1" width="90%">
+    <tr><th>Id</th><th>UserName</th><th>Password</th><th>User Type</th>
+        <c:forEach items="${users}" var="u">
+    <tr>
+    <td>${u.username}</td>
+    <td>${u.password}</td>
+</tr>
+    </c:forEach>
+</table>
+<br/><a href="insertUser.jsp?ac">Add New User</a>
 
 </body>
 </html>
