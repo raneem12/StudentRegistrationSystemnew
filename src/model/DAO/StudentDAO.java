@@ -1,6 +1,6 @@
 package model.DAO;
 
-import model.ConnectionManager;
+import model.utility.ConnectionManager;
 import model.Entities.User;
 
 import java.sql.Connection;

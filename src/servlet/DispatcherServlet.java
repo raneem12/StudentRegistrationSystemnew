@@ -1,16 +1,11 @@
-package model.servlet;
+package servlet;
 
 
-import model.DAO.CourseDAO;
-import model.DAO.UsersDAO;
-import model.Entities.Course;
-import model.controllers.AdminController;
-import model.controllers.InputProductController;
-import model.controllers.LoginController;
+import controllers.AdminController;
+import controllers.LoginController;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -26,19 +21,27 @@ import javax.servlet.http.HttpServletResponse;
         public void doGet(HttpServletRequest request,
                           HttpServletResponse response)
                 throws IOException, ServletException {
-            process(request, response);
+            try {
+                process(request, response);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
 
         @Override
         public void doPost(HttpServletRequest request,
                            HttpServletResponse response)
                 throws IOException, ServletException {
-            process(request, response);
+            try {
+                process(request, response);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
 
         private void process(HttpServletRequest request,
                              HttpServletResponse response)
-                throws IOException, ServletException {
+                throws IOException, ServletException, SQLException {
 
             String uri = request.getRequestURI();
         /*
@@ -67,20 +70,24 @@ import javax.servlet.http.HttpServletResponse;
                 dispatchUrl = controller.handleRequest(request,
                         response);
             }
-            else if (action.equals("listStudents"))
+            else if (action.equals("listusers"))
             {
-               /* AdminController controller =
-                        new AdminController();
-                dispatchUrl = controller.handleRequest(request,
-                        response);*/
+                AdminController controller = new AdminController();
+                controller.setAction("listusers");
+                dispatchUrl = controller.handleRequest(request,response);
             }  else if (action.equals("listcourses"))
             {
-                try {
-                    ArrayList<Course> courses = (ArrayList<Course>) CourseDAO.getInstance().getAllCourses();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
+                AdminController controller = new AdminController();
+                controller.setAction("listcourses");
+                dispatchUrl = controller.handleRequest(request,response);
 
+
+            }
+            else if (action.equals("insertUser"))
+            {
+                AdminController controller = new AdminController();
+                controller.setAction("insertUser");
+                dispatchUrl = controller.handleRequest(request,response);
             }
 
 

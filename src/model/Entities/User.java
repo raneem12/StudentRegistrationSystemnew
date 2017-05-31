@@ -13,11 +13,40 @@ public class User implements Serializable
     private String username;
     private String password;
 
+    public User(int id, String username, String password, int userType) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.userType = userType;
+    }
+
+    public User(String username, String password, int userType) {
+        this.username = username;
+        this.password = password;
+        this.userType = userType;
+    }
+
+    public int getUserType() {
+        return userType;
+    }
+
+    public void setUserType(int userType) {
+        this.userType = userType;
+    }
+
+    private int userType;
+
     public User() {
     }
 
     public User(String username, String password) {
         this.username = username;
+        this.password = password;
+    }
+
+    public User(int id, String userName, String password) {
+        this.id = id;
+        this.username = userName;
         this.password = password;
     }
 

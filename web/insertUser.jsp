@@ -15,75 +15,33 @@
 
         <!-- Text input-->
         <div class="form-group">
-            <label class="col-md-4 control-label" for="fn">First name</label>
+            <label class="col-md-4 control-label" for="fn">Name</label>
             <div class="col-md-4">
-                <input id="fn" name="fn" type="text" placeholder="first name" class="form-control input-md" required style = "margin-bottom: 15px">
+                <input id="name" name="name" type="text" placeholder="Username" class="form-control input-md" required style = "margin-bottom: 15px">
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="fn">Username</label>
+            <div class="col-md-4">
+                <input id="fn" name="Username" type="text" placeholder="Username" class="form-control input-md" required style = "margin-bottom: 15px">
 
             </div>
         </div>
 
         <!-- Text input-->
         <div class="form-group">
-            <label class="col-md-4 control-label" for="ln">Last name</label>
+            <label class="col-md-4 control-label" for="password">password</label>
             <div class="col-md-4">
-                <input id="ln" name="ln" type="text" placeholder="last name" class="form-control input-md" required="">
+                <input id="password" name="password" type="password" placeholder="password" class="form-control input-md" required="">
 
             </div>
         </div>
-
-
-        <!-- Text input-->
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="email">Email</label>
-            <div class="col-md-4">
-                <input id="email" name="email" type="text" placeholder="email" class="form-control input-md" required="">
-
-            </div>
-        </div>
-
-
-        <!-- Text input-->
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="city">City</label>
-            <div class="col-md-4">
-                <input id="city" name="city" type="text" placeholder="city" class="form-control input-md" required="">
-
-            </div>
-        </div>
-
-        <!-- Text input-->
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="zip">Zip Code</label>
-            <div class="col-md-4">
-                <input id="zip" name="zip" type="text" placeholder="Zip Code" class="form-control input-md" required="">
-
-            </div>
-        </div>
-
-        <!-- Text input-->
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="ctry">Country</label>
-            <div class="col-md-4">
-                <input id="ctry" name="ctry" type="text" placeholder="Country" class="form-control input-md" required="">
-
-            </div>
-        </div>
-
-        <!-- Text input-->
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="phone">Text InputPhone</label>
-            <div class="col-md-4">
-                <input id="phone" name="phone" type="text" placeholder="Phone#" class="form-control input-md" required="">
-
-            </div>
-        </div>
-
-
-
 
         <!-- Select Basic -->
         <div class="form-group">
-            <label class="col-md-4 control-label" for="selectbasic">Select Basic</label>
+            <label class="col-md-4 control-label" for="selectbasic">Select User Type</label>
             <div class="col-md-4">
                 <select id="selectbasic" name="User Type" class="form-control input-md">
                     <option>Admin</option>
@@ -99,7 +57,7 @@
         <div class="form-group">
             <label class="col-md-4 control-label" for="submit"></label>
             <div class="col-md-4">
-                <button id="submit" name="submit" class="btn btn-primary">SUBMIT</button>
+                <button id="submit" formmethod="post" formaction="insertUser" name="submit" class="btn btn-primary">SUBMIT</button>
             </div>
         </div>
 

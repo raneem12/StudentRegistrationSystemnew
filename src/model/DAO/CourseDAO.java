@@ -1,6 +1,6 @@
 package model.DAO;
 
-import model.ConnectionManager;
+import model.utility.ConnectionManager;
 import model.Entities.Course;
 
 import java.sql.*;
@@ -77,7 +77,7 @@ public class CourseDAO
                 int courseId = rs.getInt(1);
                 String courseName = rs.getString(2);
 
-                courses.add(new Course(courseId,courseName));
+                courses.add(new Course(courseName,courseId));
             }
 
             connection.close();

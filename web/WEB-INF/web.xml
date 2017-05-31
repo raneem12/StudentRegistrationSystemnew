@@ -19,14 +19,16 @@
     </context-param>
     <servlet>
         <servlet-name>dispatcherServlet</servlet-name>
-        <servlet-class>model.servlet.DispatcherServlet</servlet-class>
+        <servlet-class>servlet.DispatcherServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
         <servlet-name>dispatcherServlet</servlet-name>
         <url-pattern>/login.action</url-pattern>
-        <url-pattern>/adm.action</url-pattern>
+        <url-pattern>/listusers</url-pattern>
         <url-pattern>/listcourses</url-pattern>
+        <url-pattern>/insertUser</url-pattern>
+
     </servlet-mapping>
 
 

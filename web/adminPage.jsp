@@ -23,36 +23,73 @@
 </head>
 <body>
 
-
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
             <a class="navbar-brand">Administrator</a>
         </div>
         <ul class="nav navbar-nav">
-            <li class="active"><a href="liststudents" >Students</a></li>
+            <li><a href="listusers" >Users</a></li>
             <li><a href="listcourses">Courses</a></li>
             <li><a href="#">Teachers</a></li>
         </ul>
     </div>
 </nav>
 
-
 <div class="container">
-    <h1><% User user = (User) session.getAttribute("currentSessionUser");
-
-        out.print("Welcome " + user.getUsername() );%></h1>
+    <h1>
+        <% User user = (User) session.getAttribute("currentSessionUser");
+        out.print("Welcome " + user.getUsername() );%>
+    </h1>
 </div>
-<table border="1" width="90%">
-    <tr><th>Id</th><th>UserName</th><th>Password</th><th>User Type</th>
-        <c:forEach items="${users}" var="u">
-    <tr>
-    <td>${u.username}</td>
-    <td>${u.password}</td>
-</tr>
-    </c:forEach>
-</table>
-<br/><a href="insertUser.jsp?ac">Add New User</a>
+<div style="width: 50%; margin: 0 auto; ">
+    <c:choose>
+        <c:when test="${action == 'listcourses'}">
+            <table border="1" width="90%" class="table">
+                <tr>
+                    <th>Id</th>
+                    <th>Course Id</th>
+                    <th>Password</th>
+                    <th>User Type</th>
+                    <c:forEach items="${courses}" var="u">
+                <tr>
+                <td>${u.courseID}</td>
+                <td>${u.courseName}</td>
+            </tr>
+                </c:forEach>
+            </table>
+            <br/><a href="insertUser.jsp">Add New Course</a>
+        </c:when>
+        <c:when test="${action == 'listusers'}">
+            <table border="1" width="90%" class="table" >
+                <tr><th>Id</th><th>UserName</th><th>Password</th><th>User Type</th>
+                    <c:forEach items="${users}" var="u">
+                <tr>
+                <td>${u.id}</td>
+                <td>${u.username}</td>
+                <td>${u.password}</td>
+                <td>${u.userType}</td>
+            </tr>
+                </c:forEach>
+            </table>
+            <br/><a href="insertUser.jsp">Add New User</a>
+        </c:when>
+        <c:otherwise>
+            <table border="1" width="90%" class="table" style="width: 50%; margin: 0 auto; ">
+                <tr><th>Id</th><th>UserName</th><th>Password</th><th>User Type</th>
+                    <c:forEach items="${users}" var="u">
+                <tr>
+                <td>${u.id}</td>
+                <td>${u.username}</td>
+                <td>${u.password}</td>
+                <td>${u.userType}</td>
+            </tr>
+                </c:forEach>
+            </table>
+            <br/><a href="insertUser.jsp">Add New User</a>
+        </c:otherwise>
+    </c:choose>
+</div>
 
 </body>
 </html>

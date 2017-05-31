@@ -1,4 +1,4 @@
-package model;
+package model.utility;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -15,7 +15,7 @@ import java.util.logging.Logger;
         /**
          * instance fields used to connect to the Database
          */
-        private static final String URL = "jdbc:mysql://localhost:3306/chat?useSSL=false";
+        private static final String URL = "jdbc:mysql://localhost:3306/regSytem?useSSL=false";
         private static final String USER = "root";
         private static final String PASSWORD = "root";
 
